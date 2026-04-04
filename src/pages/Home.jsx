@@ -29,22 +29,19 @@ export default function Home() {
       {/* EXTREME HERO SECTION */}
       <section className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
         
-        {/* Dual Orientation Videos */}
+        {/* Background Videos */}
         <video 
-          autoPlay loop muted playsInline className="desktop-video"
-          style={{ position: 'absolute', width: '100vw', height: '100%', objectFit: 'cover', opacity: 0.6 }}
-        >
-          <source src="/hero-desktop.mp4" type="video/mp4" />
-        </video>
+          className="desktop-video"
+          src="/hero-desktop.mp4" autoPlay loop muted playsInline 
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
+        />
         <video 
-          autoPlay loop muted playsInline className="mobile-video"
-          style={{ position: 'absolute', width: '100vw', height: '100%', objectFit: 'cover', opacity: 0.6 }}
-        >
-          <source src="/hero-mobile.mp4" type="video/mp4" />
-        </video>
+          className="mobile-video"
+          src="/hero-mobile.mp4" autoPlay loop muted playsInline 
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
+        />
 
-        {/* Pulsing Grid & Overlay */}
-        <div className="grid-bg" style={{ zIndex: 1 }}></div>
+        {/* Video Overlay Gradient (replaces explicit grids) */}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,12,16,0.3) 0%, var(--dark) 100%)', zIndex: 1 }} />
 
         <div className="container" style={{ paddingTop: '8rem', zIndex: 2 }}>
