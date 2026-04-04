@@ -40,13 +40,25 @@ export default function Home() {
       {/* EXTREME HERO SECTION */}
       <section ref={heroRef} className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
         
-        {/* Static Energy Grid Background */}
+        {/* Static Energy Burst Background — Desktop */}
         <motion.div 
+          className="desktop-only"
           style={{ 
             position: 'absolute', inset: 0, 
-            backgroundImage: 'url(/hero-bg.png)', 
+            backgroundImage: 'url(/hero-desktop.png)', 
             backgroundSize: 'cover', 
             backgroundPosition: 'center',
+            opacity: bgBrightness,
+          }} 
+        />
+        {/* Static Energy Burst Background — Mobile */}
+        <motion.div 
+          className="mobile-only"
+          style={{ 
+            position: 'absolute', inset: 0, 
+            backgroundImage: 'url(/hero-mobile.png)', 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center top',
             opacity: bgBrightness,
           }} 
         />
@@ -122,8 +134,8 @@ export default function Home() {
             transition={{ duration: 0.4, delay: 0.8 }}
             style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
           >
-            <Link to="/services" className="btn btn-blue" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Explore Our Services</Link>
-            <Link to="/contact" className="btn btn-outline" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Request a Quote</Link>
+            <Link to="/contact" className="btn btn-blue" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Get a Free Consultation</Link>
+            <Link to="/about" className="btn btn-outline" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Apply for Jobs</Link>
           </motion.div>
         </div>
 
