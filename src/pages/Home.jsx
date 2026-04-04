@@ -1,24 +1,27 @@
 import { useEffect, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
 import Marquee from '../components/Marquee';
 
-function AnimatedCounter({ from, to, suffixClassName, suffix = "" }) {
+function AnimatedCounter({ from, to, suffix = "", suffixClassName }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-50px' });
   const count = useMotionValue(from);
-  const rounded = useTransform(count, Math.round);
-  const formatted = useTransform(rounded, (v) => v.toLocaleString());
-  const springCount = useSpring(count, { duration: 3000, bounce: 0 });
+  const spring = useSpring(count, { duration: 2500, bounce: 0 });
+  const rounded = useTransform(spring, (v) => Math.round(v).toLocaleString());
 
   useEffect(() => {
-    springCount.set(to);
-  }, [springCount, to]);
+    if (inView) {
+      count.set(to);
+    }
+  }, [inView, count, to]);
 
   return (
-    <>
-      <motion.span>{formatted}</motion.span>
+    <span ref={ref} style={{ display: 'inline-flex', alignItems: 'baseline' }}>
+      <motion.span>{rounded}</motion.span>
       <span className={suffixClassName}>{suffix}</span>
-    </>
+    </span>
   );
 }
 
@@ -126,7 +129,7 @@ export default function Home() {
             >
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--blue), transparent)' }}></div>
               <motion.div 
-                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }}
                 style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--blue)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0, 168, 255,0.3)' }}
               >
                 <AnimatedCounter from={0} to={2850} suffix="+" suffixClassName="amber-plus" />
@@ -140,7 +143,7 @@ export default function Home() {
             >
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--blue), transparent)' }}></div>
               <motion.div 
-                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }}
                 style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--blue)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0, 168, 255,0.3)' }}
               >
                 <AnimatedCounter from={0} to={1500000} suffix="+" suffixClassName="amber-plus" />
@@ -154,7 +157,7 @@ export default function Home() {
             >
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--blue), transparent)' }}></div>
               <motion.div 
-                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }}
                 style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--blue)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0, 168, 255,0.3)' }}
               >
                 <AnimatedCounter from={0} to={140} suffix="+" suffixClassName="amber-plus" />
