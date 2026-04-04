@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'fram
 import { Link } from 'react-router-dom';
 import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
 import Marquee from '../components/Marquee';
+import ElectricField from '../components/ElectricField';
 
 function AnimatedCounter({ from, to, suffixClassName, suffix = "" }) {
   const count = useMotionValue(from);
@@ -28,43 +29,19 @@ export default function Home() {
 
   // Power Restoration Scroll Physics
   const { scrollYProgress } = useScroll();
-  // Map scroll 0-15% → blackout overlay fades from 0.75 to 0
-  const blackoutOpacity = useTransform(scrollYProgress, [0, 0.12], [0.75, 0]);
-  // Map scroll 0-15% → background image brightens from 0.3 to 0.7
-  const bgBrightness = useTransform(scrollYProgress, [0, 0.12], [0.3, 0.7]);
-  // Blue surge glow intensity
+  const blackoutOpacity = useTransform(scrollYProgress, [0, 0.12], [0.65, 0]);
   const surgeGlow = useTransform(scrollYProgress, [0.08, 0.14, 0.18], [0, 1, 0]);
 
   return (
     <div style={{ paddingBottom: '0' }}>
       {/* EXTREME HERO SECTION */}
-      <section ref={heroRef} className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
+      <section ref={heroRef} className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: '#000' }}>
         
-        {/* Static Energy Burst Background — Desktop */}
-        <motion.div 
-          className="desktop-only"
-          style={{ 
-            position: 'absolute', inset: 0, 
-            backgroundImage: 'url(/hero-desktop.png)', 
-            backgroundSize: 'cover', 
-            backgroundPosition: 'center',
-            opacity: bgBrightness,
-          }} 
-        />
-        {/* Static Energy Burst Background — Mobile */}
-        <motion.div 
-          className="mobile-only"
-          style={{ 
-            position: 'absolute', inset: 0, 
-            backgroundImage: 'url(/hero-mobile.png)', 
-            backgroundSize: 'cover', 
-            backgroundPosition: 'center top',
-            opacity: bgBrightness,
-          }} 
-        />
+        {/* Procedural Electric Particle Field */}
+        <ElectricField />
 
         {/* Gradient Overlay */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,12,16,0.2) 0%, rgba(10,12,16,0.4) 50%, var(--dark) 100%)', zIndex: 1 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(10,12,16,0.5) 70%, var(--dark) 100%)', zIndex: 1 }} />
 
         {/* Power Restoration Blackout Layer */}
         <motion.div 
