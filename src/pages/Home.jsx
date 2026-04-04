@@ -69,6 +69,7 @@ export default function Home() {
             style={{ fontFamily: 'Bebas Neue', fontSize: 'clamp(4rem, 9vw, 8.5rem)', color: 'var(--white)', lineHeight: 0.9, letterSpacing: '0.05em', marginBottom: '1.5rem', maxWidth: '1000px', textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}
           >
             POWERING THE <motion.span 
+              className="glitch" data-text="GRID"
               animate={{ opacity: [0.8, 1, 0.8] }} 
               transition={{ repeat: Infinity, duration: 2 }}
               style={{ color: 'var(--blue)', display: 'inline-block' }}>GRID</motion.span>
@@ -257,15 +258,19 @@ export default function Home() {
       </section>
 
       {/* CORE CAPABILITIES */}
-      <section className="section" style={{ background: 'var(--dark2)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 5rem' }}>
+      <section className="section" style={{ background: 'var(--dark2)', position: 'relative' }}>
+        <div className="desktop-only" style={{ position: 'absolute', top: '10%', right: '5%', width: '600px', height: '600px', pointerEvents: 'auto', zIndex: 0, opacity: 0.6 }}>
+          <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"></spline-viewer>
+        </div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
+          <div style={{ textAlign: 'left', maxWidth: '700px', margin: '0 0 5rem' }}>
             <div className="section-label">Capabilities</div>
             <h2 className="section-title">FULL-SPECTRUM <span style={{ color: 'var(--red)', textShadow: '0 0 20px rgba(230, 30, 37,0.4)' }}>ENERGY SERVICES</span></h2>
             <p style={{ fontSize: '1.15rem', lineHeight: 1.7 }}>From critical infrastructure construction to emergency storm response, we bring the expertise required to keep power flowing reliably.</p>
           </div>
 
-          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', pointerEvents: 'auto' }}>
             {[
               { title: 'Distribution', icon: <Zap color="var(--blue)" size={32} />, desc: 'Turnkey overhead and underground distribution — new installations, reconductors, rehab work. From backyard pole changeouts to full right-of-way builds.' },
               { title: 'Transmission', icon: <Shield color="var(--blue)" size={32} />, desc: 'High-voltage transmission line construction, maintenance, and emergency repair. Engineered for reliability at scale across critical infrastructure.' },

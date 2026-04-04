@@ -7,6 +7,7 @@ import Copilot from '../components/Copilot';
 export default function MainLayout() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--dark)' }}>
+      <div className="scanlines"></div>
       <Navbar />
       <main style={{ flex: 1, paddingBottom: '70px' }} className="mobile-main">
         <Outlet />
