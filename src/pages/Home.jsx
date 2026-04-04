@@ -260,7 +260,7 @@ export default function Home() {
 
       {/* CORE CAPABILITIES */}
       <section className="section" style={{ background: 'var(--dark2)', position: 'relative' }}>
-        <div className="desktop-only" style={{ position: 'absolute', top: '5%', right: '5%', width: '600px', height: '600px', pointerEvents: 'auto', zIndex: 0, opacity: 0.9 }}>
+        <div className="spline-container">
           <Spline scene="https://prod.spline.design/qTEClmohuTJzMq6S/scene.splinecode" />
         </div>
 
