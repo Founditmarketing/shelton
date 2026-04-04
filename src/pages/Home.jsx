@@ -162,9 +162,9 @@ export default function Home() {
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
                 style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--blue)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0, 168, 255,0.3)' }}
               >
-                <AnimatedCounter from={0} to={1000} suffix="+" suffixClassName="amber-plus" />
+                <AnimatedCounter from={0} to={2850} suffix="+" suffixClassName="amber-plus" />
               </motion.div>
-              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Projects Completed</div>
+              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Miles of Grid Built</div>
             </motion.div>
 
             <motion.div 
@@ -176,9 +176,9 @@ export default function Home() {
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
                 style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--blue)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0, 168, 255,0.3)' }}
               >
-                <AnimatedCounter from={0} to={41200} suffix="+" suffixClassName="amber-plus" />
+                <AnimatedCounter from={0} to={1500000} suffix="+" suffixClassName="amber-plus" />
               </motion.div>
-              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Hours Without Incident</div>
+              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Safe Man-Hours Logged</div>
             </motion.div>
 
             <motion.div 
@@ -190,9 +190,9 @@ export default function Home() {
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
                 style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--blue)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0, 168, 255,0.3)' }}
               >
-                <AnimatedCounter from={0} to={100} suffix="+" suffixClassName="amber-plus" />
+                <AnimatedCounter from={0} to={140} suffix="+" suffixClassName="amber-plus" />
               </motion.div>
-              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Deployable Service Crews</div>
+              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Fully Equipped Crews</div>
             </motion.div>
 
           </div>
