@@ -170,11 +170,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FULL-BLEED CREW PHOTO BREAK */}
+      {/* FULL-BLEED CREW VIDEO BREAK */}
       <section style={{ position: 'relative', height: 'clamp(300px, 50vw, 600px)', overflow: 'hidden' }}>
-        <img 
-          src="/crew-banner.png" 
-          alt="Shelton Energy crew working in the field" 
+        <video 
+          src="/crew-video.mp4" 
+          autoPlay loop muted playsInline
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} 
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--dark) 0%, transparent 15%, transparent 85%, var(--dark) 100%)' }} />
