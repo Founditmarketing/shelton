@@ -170,21 +170,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FULL-BLEED CREW BREAK */}
+      {/* FULL-BLEED CREW VIDEO BREAK */}
       <section style={{ position: 'relative', height: 'clamp(300px, 50vw, 600px)', overflow: 'hidden' }}>
-        {/* Desktop: Video */}
         <video 
-          className="desktop-only"
-          ref={(el) => { if (el) el.play().catch(() => {}); }}
+          ref={(el) => {
+            if (!el) return;
+            el.muted = true;
+            const tryPlay = () => el.play().catch(() => {});
+            tryPlay();
+            // Retry on visibility change (iOS background tab fix)
+            document.addEventListener('visibilitychange', () => {
+              if (!document.hidden) tryPlay();
+            }, { once: true });
+            // Retry when scrolled into view
+            const obs = new IntersectionObserver(([e]) => {
+              if (e.isIntersecting) { tryPlay(); obs.disconnect(); }
+            }, { threshold: 0.1 });
+            obs.observe(el);
+          }}
           src="/crew-video.mp4" 
           autoPlay loop muted playsInline
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center' }} 
-        />
-        {/* Mobile: Static Image */}
-        <img 
-          className="mobile-only"
-          src="/crew-banner.png" 
-          alt="Shelton Energy crew"
+          preload="auto"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center' }} 
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--dark) 0%, transparent 15%, transparent 85%, var(--dark) 100%)', zIndex: 1, pointerEvents: 'none' }} />
