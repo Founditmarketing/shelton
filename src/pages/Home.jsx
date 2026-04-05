@@ -50,7 +50,7 @@ export default function Home() {
         {/* Bottom gradient fade */}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,12,16,0.3) 0%, var(--dark) 100%)', zIndex: 1 }} />
 
-        <div className="container" style={{ paddingTop: 'clamp(7rem, 15vh, 10rem)', zIndex: 3, position: 'relative' }}>
+        <div className="container" style={{ paddingTop: 'clamp(7rem, 15vh, 10rem)', zIndex: 3, position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.8 }}
-            style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
+            style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}
           >
             <Link to="/contact" className="btn btn-blue" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Request a Consultation</Link>
             <Link to="/careers" className="btn btn-outline" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Join Our Crew</Link>
