@@ -299,6 +299,7 @@ button {
   .desktop-video { display: none !important; }
   .mobile-video { display: block !important; }
   .desktop-only { display: none !important; }
+  .mobile-toggle { display: flex !important; }
   .mobile-only { display: block !important; }
 
   /* ── Mobile Hero Overrides ── */
@@ -386,4 +387,210 @@ button {
     0%, 100% { transform: translateX(0); }
     50% { transform: translateX(6px); }
   }
+}
+
+
+/* ═══════════════════════════════════════════
+   ⚡ ELECTRIFIED MODE — LIGHTS ON
+   ═══════════════════════════════════════════ */
+
+/* Flash transition overlay */
+.electric-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: white;
+  pointer-events: none;
+  animation: flash-in 0.6s ease-out forwards;
+}
+.electric-flash-out {
+  animation: flash-out 0.6s ease-out forwards;
+}
+@keyframes flash-in {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes flash-out {
+  0% { opacity: 0; }
+  15% { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+@keyframes electric-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes electric-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 168, 255, 0.3), 0 0 15px rgba(0, 168, 255, 0.1); }
+  50% { box-shadow: 0 0 15px rgba(0, 168, 255, 0.6), 0 0 40px rgba(0, 168, 255, 0.2); }
+}
+
+@keyframes electric-border-pulse {
+  0%, 100% { border-color: rgba(0, 168, 255, 0.3); }
+  50% { border-color: rgba(0, 229, 255, 0.8); }
+}
+
+@keyframes voltage-flicker {
+  0%, 96%, 100% { opacity: 1; }
+  97% { opacity: 0.7; }
+  98% { opacity: 1; }
+  99% { opacity: 0.85; }
+}
+
+/* ── Color Palette Override ── */
+[data-mode="electrified"] {
+  --dark:  #f0f4f8;
+  --dark2: #e2e8f0;
+  --dark3: #cbd5e1;
+  --steel: #94a3b8;
+  --slate: #64748b;
+  --text:  #334155;
+  --text-light: #1e293b;
+  --white: #0f172a;
+  --glass: rgba(240, 244, 248, 0.95);
+  --glass-border: rgba(0, 168, 255, 0.35);
+}
+
+/* ── Global surfaces ── */
+[data-mode="electrified"] body {
+  background: #f0f4f8;
+  color: #334155;
+}
+
+[data-mode="electrified"] header {
+  background: rgba(240, 244, 248, 0.95) !important;
+  border-bottom-color: rgba(0, 168, 255, 0.3) !important;
+}
+
+[data-mode="electrified"] header a {
+  color: #334155 !important;
+}
+[data-mode="electrified"] header a:hover {
+  color: #0284c7 !important;
+}
+
+/* ── Hero ── */
+[data-mode="electrified"] .hero {
+  background: linear-gradient(180deg, #e0f2fe, #f0f4f8) !important;
+}
+[data-mode="electrified"] .hero video {
+  opacity: 0.15 !important;
+  filter: invert(1) hue-rotate(180deg) brightness(1.5);
+}
+[data-mode="electrified"] .hero h1 {
+  color: #0f172a !important;
+  text-shadow: 0 0 30px rgba(0, 168, 255, 0.3) !important;
+}
+[data-mode="electrified"] .hero .glitch {
+  color: #0284c7 !important;
+  text-shadow: 0 0 20px rgba(0, 168, 255, 0.5) !important;
+}
+[data-mode="electrified"] .hero p {
+  color: #475569 !important;
+}
+
+/* ── Section backgrounds ── */
+[data-mode="electrified"] .section {
+  background: #f0f4f8 !important;
+}
+
+[data-mode="electrified"] section {
+  border-color: rgba(0, 168, 255, 0.2) !important;
+}
+
+/* ── Cards & Interactive Elements ── */
+[data-mode="electrified"] .section div[style*="border-radius: 16px"] {
+  background: #ffffff !important;
+  border-color: rgba(0, 168, 255, 0.25) !important;
+  box-shadow: 0 4px 20px rgba(0, 168, 255, 0.08) !important;
+  animation: electric-border-pulse 3s ease-in-out infinite;
+}
+
+/* ── Section labels & titles ── */
+[data-mode="electrified"] .section-label {
+  color: #0284c7 !important;
+}
+[data-mode="electrified"] .section-title {
+  color: #0f172a !important;
+}
+[data-mode="electrified"] .section-title span {
+  text-shadow: 0 0 15px rgba(0, 168, 255, 0.3) !important;
+}
+
+/* ── Buttons ── */
+[data-mode="electrified"] .btn-blue {
+  background: linear-gradient(135deg, #0284c7, #00A8FF) !important;
+  box-shadow: 0 0 20px rgba(0, 168, 255, 0.3) !important;
+  animation: electric-pulse 2s infinite;
+}
+[data-mode="electrified"] .btn-outline {
+  border-color: #0284c7 !important;
+  color: #0284c7 !important;
+}
+
+/* ── Stats numbers ── */
+[data-mode="electrified"] .section div[style*="font-family: 'Bebas Neue'"] {
+  color: #0284c7 !important;
+  text-shadow: 0 0 15px rgba(0, 168, 255, 0.4) !important;
+  animation: voltage-flicker 4s infinite;
+}
+
+/* ── Marquee ── */
+[data-mode="electrified"] .marquee-wrap {
+  background: linear-gradient(90deg, #e0f2fe, #f0f4f8, #e0f2fe) !important;
+  border-color: rgba(0, 168, 255, 0.3) !important;
+}
+
+/* ── Crew Video ── */
+[data-mode="electrified"] section > video {
+  filter: brightness(1.2) saturate(1.3);
+}
+
+/* ── Map ── */
+[data-mode="electrified"] .leaflet-container {
+  filter: invert(1) hue-rotate(180deg) brightness(1.1) contrast(0.9);
+}
+
+/* ── Team Portraits ── */
+[data-mode="electrified"] div[style*="border-radius: 50%"] {
+  border-color: rgba(0, 168, 255, 0.5) !important;
+  box-shadow: 0 0 25px rgba(0, 168, 255, 0.2) !important;
+  animation: electric-pulse 3s infinite;
+}
+
+/* ── Footer ── */
+[data-mode="electrified"] footer {
+  background: #e2e8f0 !important;
+  color: #334155 !important;
+}
+[data-mode="electrified"] footer a {
+  color: #0284c7 !important;
+}
+
+/* ── Mobile menu ── */
+[data-mode="electrified"] div[style*="background: var(--dark)"][style*="border-top"] {
+  background: #f0f4f8 !important;
+}
+
+/* ── Electric grid overlay (subtle) ── */
+[data-mode="electrified"]::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: 
+    linear-gradient(rgba(0, 168, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 168, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: voltage-flicker 6s infinite;
+}
+
+/* ── Copilot button override ── */
+[data-mode="electrified"] button[style*="background: var(--blue)"],
+[data-mode="electrified"] a[style*="background: var(--blue)"] {
+  box-shadow: 0 0 20px rgba(0, 168, 255, 0.4) !important;
+  animation: electric-pulse 2s infinite;
 }

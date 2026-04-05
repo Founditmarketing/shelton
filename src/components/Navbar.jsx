@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Zap } from 'lucide-react';
+import PowerToggle from './PowerToggle';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -95,17 +96,20 @@ export default function Navbar() {
               >
                 <Phone size={16} /> 318-443-5894
               </a>
+              <PowerToggle compact />
             </div>
           </nav>
 
-          {/* Mobile Toggle (44x44 target minimum) */}
-          <button 
-            className="mobile-toggle"
-            style={{ display: 'none', background: 'none', border: 'none', color: 'var(--white)', cursor: 'pointer', padding: '10px' }}
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <Menu size={32} />
-          </button>
+          {/* Mobile: Power toggle + Menu burger */}
+          <div className="mobile-toggle" style={{ display: 'none', alignItems: 'center', gap: '0.5rem' }}>
+            <PowerToggle compact />
+            <button 
+              style={{ background: 'none', border: 'none', color: 'var(--white)', cursor: 'pointer', padding: '10px' }}
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <Menu size={32} />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -117,7 +121,7 @@ export default function Navbar() {
         }
         @media (max-width: 900px) {
           .desktop-nav { display: none !important; }
-          .mobile-toggle { display: block !important; }
+          .mobile-toggle { display: flex !important; }
         }
       `}</style>
 
