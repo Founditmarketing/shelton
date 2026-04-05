@@ -86,7 +86,7 @@ export default function Home() {
               animate={{ opacity: [0.8, 1, 0.8] }} 
               transition={{ repeat: Infinity, duration: 2 }}
               style={{ color: 'var(--blue)', display: 'inline-block' }}>GRID</motion.span>
-            <span style={{ display: 'block', fontSize: 'clamp(1.2rem, 3vw, 2.8rem)', fontFamily: 'Barlow', fontWeight: '500', color: 'var(--text)', letterSpacing: '0', marginTop: '1rem' }}>
+            <span className="hero-subtitle" style={{ display: 'block', fontSize: 'clamp(1.2rem, 3vw, 2.8rem)', fontFamily: 'Barlow', fontWeight: '500', color: 'var(--text)', letterSpacing: '0', marginTop: '1rem' }}>
               Electric Utility Transmission & Distribution Systems
             </span>
           </motion.h1>
@@ -104,7 +104,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.8 }}
-            style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}
+            style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}
           >
             <Link to="/contact" className="btn btn-blue" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Request a Consultation</Link>
             <Link to="/careers" className="btn btn-outline" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Join Our Crew</Link>
