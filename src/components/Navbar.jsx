@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Zap } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -67,19 +67,35 @@ export default function Navbar() {
               ))}
             </div>
 
-            <a 
-              href="tel:3184435894" 
-              style={{ 
-                display: 'flex', alignItems: 'center', gap: '0.5rem', 
-                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600,
-                color: 'var(--blue)', border: '1px solid var(--blue)', borderRadius: '4px',
-                padding: '0.6rem 1.2rem', transition: 'all 0.2s', minHeight: '44px'
-              }}
-              onMouseOver={(e) => { e.currentTarget.style.background = 'var(--blue)'; e.currentTarget.style.color = 'var(--dark)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 168, 255, 0.4)'; }}
-              onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--blue)'; e.currentTarget.style.boxShadow = 'none'; }}
-            >
-              <Phone size={16} /> 318-443-5894
-            </a>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <a 
+                href="tel:3184435894" 
+                style={{ 
+                  display: 'flex', alignItems: 'center', gap: '0.5rem', 
+                  fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.85rem',
+                  letterSpacing: '0.1em', textTransform: 'uppercase',
+                  color: 'var(--white)', background: 'var(--red)', borderRadius: '4px',
+                  padding: '0.6rem 1rem', transition: 'all 0.2s', minHeight: '44px',
+                  boxShadow: '0 0 15px rgba(230, 30, 37, 0.3)',
+                  animation: 'pulse-red 3s infinite'
+                }}
+              >
+                <Zap size={14} /> 24/7 STORM RESPONSE
+              </a>
+              <a 
+                href="tel:3184435894" 
+                style={{ 
+                  display: 'flex', alignItems: 'center', gap: '0.5rem', 
+                  fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600,
+                  color: 'var(--blue)', border: '1px solid var(--blue)', borderRadius: '4px',
+                  padding: '0.6rem 1.2rem', transition: 'all 0.2s', minHeight: '44px'
+                }}
+                onMouseOver={(e) => { e.currentTarget.style.background = 'var(--blue)'; e.currentTarget.style.color = 'var(--dark)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 168, 255, 0.4)'; }}
+                onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--blue)'; e.currentTarget.style.boxShadow = 'none'; }}
+              >
+                <Phone size={16} /> 318-443-5894
+              </a>
+            </div>
           </nav>
 
           {/* Mobile Toggle (44x44 target minimum) */}
@@ -95,6 +111,10 @@ export default function Navbar() {
 
       {/* Mobile Menu Styling Overrides */}
       <style>{`
+        @keyframes pulse-red {
+          0%, 100% { box-shadow: 0 0 15px rgba(230, 30, 37, 0.3); }
+          50% { box-shadow: 0 0 25px rgba(230, 30, 37, 0.6); }
+        }
         @media (max-width: 900px) {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: block !important; }
@@ -145,6 +165,14 @@ export default function Navbar() {
                     </Link>
                   </motion.div>
                 ))}
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1.5rem' }}>
+                <a href="tel:3184435894" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontFamily: 'Barlow Condensed', fontSize: '1.1rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--white)', background: 'var(--red)', borderRadius: '8px', padding: '1rem', boxShadow: '0 0 20px rgba(230,30,37,0.3)' }}>
+                  <Zap size={18} /> 24/7 STORM RESPONSE
+                </a>
+                <Link to="/careers" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontFamily: 'Barlow Condensed', fontSize: '1.1rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--blue)', background: 'transparent', border: '1px solid var(--blue)', borderRadius: '8px', padding: '1rem' }}>
+                  Join Our Crew
+                </Link>
               </div>
             </motion.div>
           </>

@@ -96,8 +96,8 @@ export default function Home() {
             transition={{ duration: 0.4, delay: 0.8 }}
             style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
           >
-            <Link to="/contact" className="btn btn-blue" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Get a Free Consultation</Link>
-            <Link to="/about" className="btn btn-outline" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Apply for Jobs</Link>
+            <Link to="/contact" className="btn btn-blue" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Request a Consultation</Link>
+            <Link to="/careers" className="btn btn-outline" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Join Our Crew</Link>
           </motion.div>
         </div>
 
