@@ -119,7 +119,7 @@ export default function Home() {
       <Marquee />
 
       {/* COUNTING STATS BENTO GRID */}
-      <section className="section" style={{ background: 'var(--dark)', position: 'relative', overflow: 'hidden', padding: '7rem 2rem' }}>
+      <section className="section" style={{ background: 'linear-gradient(180deg, #0d1520 0%, #0a1628 100%)', position: 'relative', overflow: 'hidden', padding: '7rem 2rem' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 100%, rgba(0, 168, 255,0.05) 0%, transparent 60%)', zIndex: 0 }} />
         <div className="container">
           <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
@@ -190,23 +190,23 @@ export default function Home() {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--dark) 0%, transparent 15%, transparent 85%, var(--dark) 100%)', zIndex: 1, pointerEvents: 'none' }} />
       </section>
 
-      {/* OPERATIONS COMMAND CENTER MAP */}
+      {/* WHERE WE OPERATE */}
       <section className="section" style={{ background: 'var(--dark)', borderTop: '1px solid var(--glass-border)', padding: '5rem 2rem' }}>
         <div className="container">
           <div className="ops-layout" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.5fr)', gap: '4rem', alignItems: 'center' }}>
             
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="section-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Activity size={16} /> LIVE OPS TELEMETRY</div>
-              <h2 className="section-title">GULF SOUTH <span style={{ color: 'var(--red)', textShadow: '0 0 20px rgba(230, 30, 37,0.4)' }}>GRID COMMAND.</span></h2>
+              <div className="section-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Activity size={16} /> WHERE WE WORK</div>
+              <h2 className="section-title">GULF SOUTH <span style={{ color: 'var(--red)', textShadow: '0 0 20px rgba(230, 30, 37,0.4)' }}>COVERAGE.</span></h2>
               <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'var(--text)', marginBottom: '2rem' }}>
-                Our proprietary AI logistics system monitors regional weather threats, predicting infrastructure failure points before they collapse. When a storm makes landfall, our crews are already staged at the perimeter.
+                We keep crews and equipment staged across the Gulf South so we can mobilize fast — whether it's a scheduled build or a Category 4 making landfall. When the call comes, we're already moving.
               </p>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {[
-                  { status: 'HQ: ACTIVE', color: 'var(--blue)', loc: 'Alexandria, LA', desc: 'Central Logistics & Staging' },
-                  { status: 'WARNING', color: 'var(--red)', loc: 'Houston, TX', desc: 'Predictive Hurricane Staging' },
-                  { status: 'ACTIVE', color: 'var(--blue)', loc: 'Mobile, AL', desc: 'Underground Vault Rehab' }
+                  { status: 'HEADQUARTERS', color: 'var(--blue)', loc: 'Alexandria, LA', desc: 'Central Dispatch & Fleet Staging' },
+                  { status: 'STORM READY', color: 'var(--red)', loc: 'Houston, TX', desc: 'Hurricane Season Pre-Staging' },
+                  { status: 'ACTIVE JOB', color: 'var(--blue)', loc: 'Mobile, AL', desc: 'Underground Vault Rehab' }
                 ].map((item, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--dark2)', padding: '1rem 1.5rem', borderRadius: '8px', borderLeft: `3px solid ${item.color}` }}>
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: item.color, boxShadow: `0 0 10px ${item.color}` }} />
@@ -229,7 +229,7 @@ export default function Home() {
       </section>
 
       {/* CORE CAPABILITIES */}
-      <section className="section" style={{ background: 'var(--dark2)', position: 'relative', overflow: 'hidden' }}>
+      <section className="section" style={{ background: 'linear-gradient(180deg, #111827 0%, #0f1b2d 100%)', position: 'relative', overflow: 'hidden' }}>
         {/* Lineman Cutout — Desktop Only */}
         <motion.img 
           className="desktop-only"
@@ -282,7 +282,7 @@ export default function Home() {
       </section>
 
       {/* THE TEAM BEHIND THE GRID */}
-      <section className="section" style={{ background: 'var(--dark)', padding: '7rem 2rem' }}>
+      <section className="section" style={{ background: 'linear-gradient(180deg, #0a0c10 0%, #0d1520 100%)', padding: '7rem 2rem' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem' }}>
             <div className="section-label">Our People</div>
