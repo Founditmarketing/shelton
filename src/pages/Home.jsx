@@ -38,8 +38,8 @@ export default function Home() {
         {/* Background Video */}
         <video 
           className="desktop-video"
-          src="/hero-desktop-new.mp4" autoPlay loop muted playsInline 
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
+          src="/hero-desktop-v2.mp4" autoPlay loop muted playsInline 
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} 
         />
         <video 
           className="mobile-video"
@@ -48,7 +48,7 @@ export default function Home() {
         />
 
         {/* Bottom gradient fade */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,12,16,0.3) 0%, var(--dark) 100%)', zIndex: 1 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,12,16,0.1) 0%, rgba(10,12,16,0.2) 50%, var(--dark) 95%)', zIndex: 1 }} />
 
         <div className="container" style={{ paddingTop: 'clamp(7rem, 15vh, 10rem)', zIndex: 3, position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
           <motion.div 
