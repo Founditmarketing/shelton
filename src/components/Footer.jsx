@@ -36,7 +36,7 @@ export default function Footer() {
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <li><a href="tel:318-443-5894" style={{ color: 'rgba(240,240,250,0.5)', fontSize: '0.85rem' }}>318.443.5894</a></li>
             <li><a href="mailto:info@sheltonenergy.com" style={{ color: 'rgba(240,240,250,0.5)', fontSize: '0.85rem' }}>info@sheltonenergy.com</a></li>
-            <li><span style={{ color: 'rgba(240,240,250,0.3)', fontSize: '0.85rem', lineHeight: 1.5 }}>Alexandria, LA</span></li>
+            <li><a href="https://goo.gl/maps/iyc37Lib2cfxyCFP8" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(240,240,250,0.3)', fontSize: '0.85rem', lineHeight: 1.5 }}>1439 Centre Court, Suite 600<br/>Alexandria, LA 71301</a></li>
           </ul>
         </div>
       </div>

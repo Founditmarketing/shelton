@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
+import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin, Drill, Cable } from 'lucide-react';
 import Marquee from '../components/Marquee';
 import { ChevronRight } from 'lucide-react';
 
@@ -36,28 +36,28 @@ function AnimatedCounter({ from, to, suffix = "" }) {
 export default function Home() {
   return (
     <div>
-      {/* ═══ HERO — Full viewport cinematic ═══ */}
+      {/* ═══ HERO ═══ */}
       <section className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: '#000' }}>
         <video className="desktop-video" src="/hero-desktop-v2.mp4" autoPlay loop muted playsInline style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} />
         <video className="mobile-video" src="/hero-mobile-v2.mp4" autoPlay loop muted playsInline style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 60%, #000000 100%)', zIndex: 1 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 60%, #000 100%)', zIndex: 1 }} />
 
         <div className="container" style={{ paddingTop: 'clamp(8rem, 18vh, 12rem)', zIndex: 3, position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
-            <div className="section-label" style={{ marginBottom: '1.5rem' }}>Veteran-Owned · Family Driven</div>
+            <div className="section-label" style={{ marginBottom: '1.5rem' }}>Family Owned · Values Driven · People Focused</div>
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
             style={{ fontFamily: 'Inter', fontSize: 'clamp(3rem, 7vw, 5.5rem)', color: '#f0f0fa', lineHeight: 1.0, letterSpacing: '-0.03em', marginBottom: '2rem', maxWidth: '800px', fontWeight: 600 }}>
             Powering the<br/>Grid
             <span className="hero-subtitle" style={{ display: 'block', fontSize: 'clamp(0.85rem, 1.5vw, 1.1rem)', fontWeight: 400, color: 'rgba(240,240,250,0.5)', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: '1.5rem', fontFamily: 'Barlow Condensed' }}>
-              Transmission · Distribution · Substation · Storm Response
+              Transmission · Distribution · Substation · Storm Restoration · Underground · Boring
             </span>
           </motion.h1>
 
           <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.7 }}
-            style={{ fontSize: '1.05rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.5)', maxWidth: '480px', marginBottom: '3rem' }}>
-            One of the fastest-growing overhead and underground utility contractors in the Gulf South.
+            style={{ fontSize: '1.05rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.5)', maxWidth: '520px', marginBottom: '3rem' }}>
+            Provider of Transmission, Distribution, Substation and Renewable Maintenance. 100% focused on people and safety.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9 }}
@@ -68,20 +68,20 @@ export default function Home() {
         </div>
 
         <motion.div className="desktop-only" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
-          style={{ position: 'absolute', bottom: '3rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+          style={{ position: 'absolute', bottom: '3rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <motion.div animate={{ y: [0, 12, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
             style={{ width: '1px', height: '50px', background: 'linear-gradient(to bottom, rgba(218,41,28,0.6), transparent)' }} />
         </motion.div>
       </section>
 
-      {/* ═══ STATS BAR ═══ */}
+      {/* ═══ STATS ═══ */}
       <section style={{ background: '#000', borderTop: '1px solid rgba(240,240,250,0.06)', borderBottom: '1px solid rgba(240,240,250,0.06)', padding: '4rem 2rem' }}>
         <div className="container">
           <div className="carousel-wrapper">
           <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', textAlign: 'center' }}>
             {[
-              { value: 2850, suffix: '+', label: 'MILES OF GRID BUILT' },
-              { value: 140, suffix: '+', label: 'FULLY EQUIPPED CREWS' },
+              { value: 1000, suffix: '+', label: 'PROJECTS COMPLETED' },
+              { value: 41200, suffix: '+', label: 'HOURS WITHOUT INCIDENT' },
               { value: 24, suffix: '/7', label: 'STORM RESPONSE' }
             ].map((stat, idx) => (
               <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}>
@@ -97,13 +97,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ MARQUEE ═══ */}
       <Marquee />
 
-      {/* ═══ CREW VIDEO BREAK ═══ */}
+      {/* ═══ CREW VIDEO ═══ */}
       <section style={{ position: 'relative', height: 'clamp(300px, 50vw, 500px)', overflow: 'hidden' }}>
-        <video
-          ref={(el) => { if (!el) return; el.muted = true; const tryPlay = () => el.play().catch(() => {}); tryPlay(); }}
+        <video ref={(el) => { if (!el) return; el.muted = true; el.play().catch(() => {}); }}
           src="/crew-video.mp4" autoPlay loop muted playsInline preload="auto"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #000 0%, transparent 25%, transparent 75%, #000 100%)', zIndex: 1 }} />
@@ -115,33 +113,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ SERVICES GRID ═══ */}
+      {/* ═══ SERVICES — 6 Divisions ═══ */}
       <section className="section" style={{ background: '#000' }}>
         <div className="container">
           <div style={{ maxWidth: '500px', marginBottom: '4rem' }}>
             <div className="section-label">Services</div>
-            <h2 className="section-title">Complete Utility<br/>Solutions</h2>
-            <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.4)' }}>From transmission to distribution, substation to storm response — we deliver full-spectrum utility construction services.</p>
+            <h2 className="section-title">Full-Spectrum<br/>Utility Services</h2>
+            <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.4)' }}>Shelton Energy Solutions delivers a full field of scheduled and emergency electrical transmission & distribution services.</p>
           </div>
 
           <div className="carousel-wrapper">
-          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1px', background: 'rgba(240,240,250,0.06)' }}>
+          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(240,240,250,0.06)' }}>
             {[
-              { title: 'Transmission', icon: <Zap color="var(--red)" size={22} />, desc: 'High-voltage transmission line construction and maintenance — steel structures, conductor stringing, and right-of-way clearing.' },
-              { title: 'Distribution', icon: <Activity color="var(--red)" size={22} />, desc: 'Overhead and underground distribution systems. New builds, rebuilds, and system upgrades across the Gulf South.' },
-              { title: 'Substation', icon: <Wrench color="var(--red)" size={22} />, desc: 'Full substation construction, retrofit, and commissioning services. Concrete, steel, and control system integration.' },
-              { title: 'Storm Response', icon: <Shield color="var(--red)" size={22} />, desc: 'Rapid-deployment storm restoration crews available 24/7. Proven track record in hurricane, ice storm, and tornado recovery.' }
+              { title: 'Distribution', icon: <Activity color="var(--red)" size={22} />, desc: 'Overhead and underground — new installation, reconducts, and rehab work. From the big city to the swamp, our linemen have all the equipment to complete the task safely.' },
+              { title: 'Transmission', icon: <Zap color="var(--red)" size={22} />, desc: 'High-voltage transmission line construction and maintenance. Steel structures, conductor stringing, and right-of-way clearing.' },
+              { title: 'Substation', icon: <Wrench color="var(--red)" size={22} />, desc: 'Full substation construction, retrofit, and commissioning. Concrete foundations, steel erection, bus work, and control system integration.' },
+              { title: 'Storm Restoration', icon: <Shield color="var(--red)" size={22} />, desc: 'Rapid-deployment storm restoration crews available 24/7. Proven track record in hurricane, ice storm, tornado, and flood recovery.' },
+              { title: 'Boring', icon: <Drill color="var(--red)" size={22} />, desc: 'Horizontal directional drilling and boring services for utility installation with minimal surface disruption.' },
+              { title: 'Underground', icon: <Cable color="var(--red)" size={22} />, desc: 'Underground cable installation, splicing, and maintenance. Duct bank construction and conduit systems.' }
             ].map((srv, idx) => (
               <motion.div key={srv.title}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}
                 whileHover={{ background: 'rgba(218,41,28,0.04)' }}
                 style={{ background: '#000', padding: '3rem 2.5rem', cursor: 'pointer', transition: 'background 0.3s' }}>
                 <div style={{ marginBottom: '1.5rem', opacity: 0.8 }}>{srv.icon}</div>
-                <h3 style={{ fontFamily: 'Inter', fontSize: '1.2rem', color: '#f0f0fa', marginBottom: '1rem', fontWeight: 600 }}>{srv.title}</h3>
-                <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.4)', marginBottom: '1.5rem' }}>{srv.desc}</p>
-                <Link to="/services" style={{ fontFamily: 'Barlow Condensed', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-                  Learn More <ArrowRight size={14} />
-                </Link>
+                <h3 style={{ fontFamily: 'Inter', fontSize: '1.1rem', color: '#f0f0fa', marginBottom: '1rem', fontWeight: 600 }}>{srv.title}</h3>
+                <p style={{ fontSize: '0.88rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.4)' }}>{srv.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -150,7 +147,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ WHERE WE OPERATE ═══ */}
+      {/* ═══ COVERAGE ═══ */}
       <section className="section" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(240,240,250,0.06)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem' }}>
@@ -169,29 +166,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ LEADERSHIP ═══ */}
+      {/* ═══ LEADERSHIP — Real Team ═══ */}
       <section className="section" style={{ background: '#000', borderTop: '1px solid rgba(240,240,250,0.06)' }}>
         <div className="container">
           <div style={{ maxWidth: '500px', marginBottom: '4rem' }}>
             <div className="section-label">Leadership</div>
-            <h2 className="section-title">The Team Behind<br/>the Power</h2>
+            <h2 className="section-title">Our Team</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+          <div className="carousel-wrapper">
+          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(240,240,250,0.06)' }}>
             {[
-              { img: '/team-supervisor.png', name: 'Field Supervisor', role: 'Operations', desc: 'Leading field operations with hands-on expertise in overhead and underground distribution systems.' },
-              { img: '/team-dispatcher.png', name: 'Dispatch Center', role: 'Coordination', desc: 'Managing real-time crew deployment, material logistics, and storm response coordination.' },
-              { img: '/team-pm.png', name: 'Project Manager', role: 'Management', desc: 'Overseeing project timelines, budgets, and client relationships from contract to completion.' },
+              { name: 'Tony Jenkins', role: 'COO', email: 'tony@sheltonenergy.com' },
+              { name: 'Chawn Brossette', role: 'VP Louisiana', email: 'cbrossette@sheltonenergy.com' },
+              { name: 'Tyler Fogleman', role: 'Divisional Manager', email: 'tfogleman@sheltonenergy.com' },
+              { name: 'Buddy Parker', role: 'Divisional Manager', email: 'bparker@sheltonenergy.com' },
+              { name: 'Steve Delafosse', role: 'Divisional Manager', email: 'sdelafosse@sheltonenergy.com' },
+              { name: 'Travis Ducote', role: 'Director of Safety', email: 'tducote@sheltonenergy.com' }
             ].map((person, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
-                style={{ borderTop: '1px solid rgba(240,240,250,0.08)', paddingTop: '2rem' }}>
-                <div style={{ width: '80px', height: '80px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid rgba(240,240,250,0.1)' }}>
-                  <img src={person.img} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
-                </div>
-                <h3 style={{ fontFamily: 'Inter', fontSize: '1.1rem', color: '#f0f0fa', fontWeight: 600, marginBottom: '0.25rem' }}>{person.name}</h3>
+              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}
+                style={{ background: '#000', padding: '2.5rem 2rem' }}>
+                <h3 style={{ fontFamily: 'Inter', fontSize: '1.05rem', color: '#f0f0fa', fontWeight: 600, marginBottom: '0.3rem' }}>{person.name}</h3>
                 <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '1rem' }}>{person.role}</div>
-                <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.4)' }}>{person.desc}</p>
+                <a href={`mailto:${person.email}`} style={{ fontSize: '0.8rem', color: 'rgba(240,240,250,0.4)', transition: 'color 0.2s' }}
+                  onMouseOver={e => e.currentTarget.style.color='var(--red)'} onMouseOut={e => e.currentTarget.style.color='rgba(240,240,250,0.4)'}>
+                  {person.email}
+                </a>
               </motion.div>
             ))}
+          </div>
+          <SwipeHint />
           </div>
         </div>
       </section>

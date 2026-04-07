@@ -25,16 +25,16 @@ export default function Contact() {
                 {[
                   { icon: <Phone size={18} color="var(--red)" />, label: 'Phone', value: '318.443.5894', href: 'tel:318-443-5894' },
                   { icon: <Mail size={18} color="var(--red)" />, label: 'Email', value: 'info@sheltonenergy.com', href: 'mailto:info@sheltonenergy.com' },
-                  { icon: <MapPin size={18} color="var(--red)" />, label: 'Address', value: 'Alexandria, LA' }
+                  { icon: <MapPin size={18} color="var(--red)" />, label: 'Address', value: '1439 Centre Court, Suite 600\nAlexandria, LA 71301', href: 'https://goo.gl/maps/iyc37Lib2cfxyCFP8' }
                 ].map((item, idx) => (
                   <div key={idx} style={{ background: '#000', padding: '2rem', display: 'flex', gap: '1rem' }}>
                     <div style={{ flexShrink: 0, marginTop: '0.1rem' }}>{item.icon}</div>
                     <div>
                       <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(240,240,250,0.3)', marginBottom: '0.3rem' }}>{item.label}</div>
                       {item.href ? (
-                        <a href={item.href} style={{ fontSize: '1rem', color: '#f0f0fa', fontWeight: 500 }}>{item.value}</a>
+                        <a href={item.href} target={item.label === 'Address' ? '_blank' : undefined} rel="noopener noreferrer" style={{ fontSize: '0.95rem', color: '#f0f0fa', fontWeight: 500, whiteSpace: 'pre-line' }}>{item.value}</a>
                       ) : (
-                        <span style={{ fontSize: '0.95rem', color: '#f0f0fa' }}>{item.value}</span>
+                        <span style={{ fontSize: '0.95rem', color: '#f0f0fa', whiteSpace: 'pre-line' }}>{item.value}</span>
                       )}
                     </div>
                   </div>
