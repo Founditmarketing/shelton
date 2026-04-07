@@ -1,57 +1,54 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Drill, Shield, TrendingUp } from 'lucide-react';
+import { ArrowRight, Shield, TrendingUp, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Careers() {
   return (
-    <div style={{ paddingTop: '8rem', paddingBottom: '0' }}>
-      <section className="section" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', padding: '2rem 2rem 4rem' }}>
-        <div className="container">
-          <div style={{ background: 'var(--dark2)', border: '1px solid var(--glass-border)', borderRadius: '16px', overflow: 'hidden', display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', minHeight: '500px' }} className="career-grid">
-            
-            <div style={{ padding: '4rem 3rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ position: 'relative', zIndex: 1 }}>
-                <div className="section-label">Join The Crew</div>
-                <h1 className="section-title">BUILD YOUR FUTURE<br/><span style={{ color: 'var(--blue)', textShadow: '0 0 20px rgba(0, 168, 255,0.4)' }}>WITH US</span></h1>
-                <p style={{ fontSize: '1.1rem', color: 'var(--text)', lineHeight: 1.6, marginBottom: '2rem' }}>
-                  We invest in our people with industry-leading training, rapid advancement, and a culture that prioritizes your safety above all else.
-                </p>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', marginBottom: '3rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ width: '40px', height: '40px', background: 'rgba(0, 168, 255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><TrendingUp size={18} color="var(--blue)" /></div>
-                    <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--white)' }}>Competitive Pay & Advancement</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ width: '40px', height: '40px', background: 'rgba(0, 168, 255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Shield size={18} color="var(--blue)" /></div>
-                    <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--white)' }}>Industry-Leading Safety Training</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ width: '40px', height: '40px', background: 'rgba(0, 168, 255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Drill size={18} color="var(--blue)" /></div>
-                    <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--white)' }}>Veteran-Friendly Culture</span>
-                  </div>
-                </div>
-
-                <Link to="/contact" className="btn btn-blue" style={{ width: '100%' }}>View Open Positions <ArrowRight size={18} style={{ marginLeft: '10px' }} /></Link>
-              </motion.div>
-            </div>
-
-            <div style={{ position: 'relative' }}>
-              <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80" alt="Construction Worker" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, var(--dark2) 0%, transparent 40%)' }}></div>
-            </div>
-
-          </div>
+    <div style={{ paddingTop: '8rem' }}>
+      <section style={{ position: 'relative', minHeight: '50vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: '#000' }}>
+        <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=1400&q=80" alt="Construction" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.4), #000)', zIndex: 1 }} />
+        <div className="container" style={{ zIndex: 2, padding: '4rem 2rem' }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <div className="section-label">Join the Crew</div>
+            <h1 className="section-title" style={{ maxWidth: '500px' }}>Build Your Future<br/>With Us</h1>
+          </motion.div>
         </div>
       </section>
 
-      <style>{`
-        @media(max-width: 900px) {
-          .career-grid { grid-template-columns: 1fr !important; }
-          .career-grid > div:nth-child(2) { min-height: 300px; }
-          .career-grid > div:nth-child(1) { padding: 3rem 2rem !important; }
-        }
-      `}</style>
+      <section className="section" style={{ background: '#000' }}>
+        <div className="container" style={{ maxWidth: '800px' }}>
+          <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'rgba(240,240,250,0.5)', marginBottom: '3rem' }}>
+            Shelton Energy Solutions is always looking for skilled, safety-minded professionals to join our growing team. We offer competitive pay, comprehensive benefits, and clear paths for career advancement.
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(240,240,250,0.06)', marginBottom: '3rem' }}>
+            {[
+              { icon: <TrendingUp size={20} color="var(--red)" />, title: 'Competitive Pay & Benefits', desc: 'Industry-leading compensation with full benefits package.' },
+              { icon: <Shield size={20} color="var(--red)" />, title: 'Safety-First Culture', desc: 'Comprehensive training and a culture that puts your safety above all else.' },
+              { icon: <Heart size={20} color="var(--red)" />, title: 'Veteran-Friendly Workplace', desc: 'Founded by a veteran — we understand and value military service and discipline.' }
+            ].map((item, idx) => (
+              <motion.div key={idx} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08 }}
+                style={{ background: '#000', padding: '2rem', display: 'flex', gap: '1.25rem' }}>
+                <div style={{ flexShrink: 0, marginTop: '0.2rem' }}>{item.icon}</div>
+                <div>
+                  <h3 style={{ fontFamily: 'Inter', fontSize: '1rem', fontWeight: 600, color: '#f0f0fa', marginBottom: '0.3rem' }}>{item.title}</h3>
+                  <p style={{ fontSize: '0.9rem', lineHeight: 1.5, color: 'rgba(240,240,250,0.4)' }}>{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <Link to="/contact" className="btn btn-red" style={{ flex: 1, justifyContent: 'center' }}>
+              Apply Now <ArrowRight size={14} style={{ marginLeft: '8px' }} />
+            </Link>
+            <a href="tel:3184435894" className="btn btn-blue" style={{ flex: 1, justifyContent: 'center' }}>
+              Call Us: 318.443.5894
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

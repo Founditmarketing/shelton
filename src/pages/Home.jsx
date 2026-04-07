@@ -3,7 +3,6 @@ import { motion, useMotionValue, useSpring, useTransform, useInView } from 'fram
 import { Link } from 'react-router-dom';
 import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
 import Marquee from '../components/Marquee';
-import OpsMap from '../components/OpsMap';
 import { ChevronRight } from 'lucide-react';
 
 function SwipeHint() {
@@ -15,7 +14,7 @@ function SwipeHint() {
   );
 }
 
-function AnimatedCounter({ from, to, suffix = "", suffixClassName }) {
+function AnimatedCounter({ from, to, suffix = "" }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-50px' });
   const count = useMotionValue(from);
@@ -23,252 +22,125 @@ function AnimatedCounter({ from, to, suffix = "", suffixClassName }) {
   const rounded = useTransform(spring, (v) => Math.round(v).toLocaleString());
 
   useEffect(() => {
-    if (inView) {
-      count.set(to);
-    }
+    if (inView) count.set(to);
   }, [inView, count, to]);
 
   return (
     <span ref={ref} style={{ display: 'inline-flex', alignItems: 'baseline' }}>
       <motion.span>{rounded}</motion.span>
-      <span className={suffixClassName}>{suffix}</span>
+      <span style={{ color: 'var(--red)' }}>{suffix}</span>
     </span>
   );
 }
 
-
 export default function Home() {
-  const heroRef = useRef(null);
-
   return (
-    <div style={{ paddingBottom: '0' }}>
-      {/* EXTREME HERO SECTION */}
-      <section ref={heroRef} className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-        
-        {/* Background Video */}
-        <video 
-          className="desktop-video"
-          src="/hero-desktop-v2.mp4" autoPlay loop muted playsInline 
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} 
-        />
-        <video 
-          className="mobile-video"
-          src="/hero-mobile-v2.mp4" autoPlay loop muted playsInline 
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
-        />
+    <div>
+      {/* ═══ HERO — Full viewport cinematic ═══ */}
+      <section className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: '#000' }}>
+        <video className="desktop-video" src="/hero-desktop-v2.mp4" autoPlay loop muted playsInline style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} />
+        <video className="mobile-video" src="/hero-mobile-v2.mp4" autoPlay loop muted playsInline style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 60%, #000000 100%)', zIndex: 1 }} />
 
-        {/* Bottom gradient fade — Ferrari: darkness yielding to content */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.6) 80%, #000000 100%)', zIndex: 1 }} />
-
-        <div className="container" style={{ paddingTop: 'clamp(7rem, 15vh, 10rem)', zIndex: 3, position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.4rem 0', marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.2)' }}
-          >
-            <div 
-              style={{ width: '6px', height: '6px', background: 'var(--red)', borderRadius: '50%' }}
-            />
-            <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>Veteran-Owned &bull; Family Driven</span>
+        <div className="container" style={{ paddingTop: 'clamp(8rem, 18vh, 12rem)', zIndex: 3, position: 'relative' }}>
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
+            <div className="section-label" style={{ marginBottom: '1.5rem' }}>Veteran-Owned · Family Driven</div>
           </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{ fontFamily: 'Inter', fontSize: 'clamp(3rem, 7vw, 6rem)', color: 'var(--white)', lineHeight: 1.0, letterSpacing: '-0.03em', marginBottom: '1.5rem', maxWidth: '900px', fontWeight: 600 }}
-          >
-            Powering the <span
-              style={{ color: 'var(--red)', display: 'inline' }}>Grid</span>
-            <span className="hero-subtitle" style={{ display: 'block', fontSize: 'clamp(1rem, 2vw, 1.5rem)', fontFamily: 'Barlow Condensed', fontWeight: '400', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: '1.2rem' }}>
-              Transmission &bull; Distribution &bull; Substation &bull; Storm Response
+
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
+            style={{ fontFamily: 'Inter', fontSize: 'clamp(3rem, 7vw, 5.5rem)', color: '#f0f0fa', lineHeight: 1.0, letterSpacing: '-0.03em', marginBottom: '2rem', maxWidth: '800px', fontWeight: 600 }}>
+            Powering the<br/>Grid
+            <span className="hero-subtitle" style={{ display: 'block', fontSize: 'clamp(0.85rem, 1.5vw, 1.1rem)', fontWeight: 400, color: 'rgba(240,240,250,0.5)', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: '1.5rem', fontFamily: 'Barlow Condensed' }}>
+              Transmission · Distribution · Substation · Storm Response
             </span>
           </motion.h1>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.6 }}
-            style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', maxWidth: '550px', marginBottom: '3rem', fontWeight: 300 }}
-          >
+          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.7 }}
+            style={{ fontSize: '1.05rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.5)', maxWidth: '480px', marginBottom: '3rem' }}>
             One of the fastest-growing overhead and underground utility contractors in the Gulf South.
           </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.8 }}
-            style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}
-          >
-            <Link to="/contact" className="btn btn-blue" style={{ fontSize: '0.9rem', padding: '1rem 2.5rem', letterSpacing: '0.1em' }}>Request a Consultation</Link>
-            <Link to="/careers" className="btn btn-outline" style={{ fontSize: '0.9rem', padding: '1rem 2.5rem', letterSpacing: '0.1em' }}>Join Our Crew</Link>
+
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9 }}
+            style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', width: '100%' }}>
+            <Link to="/contact" className="btn btn-blue">Request a Consultation</Link>
+            <Link to="/careers" className="btn btn-outline">Join Our Crew <ArrowRight size={16} style={{ marginLeft: '8px' }} /></Link>
           </motion.div>
         </div>
 
-        {/* Scroll Indicator — desktop only */}
-        <motion.div 
-          className="desktop-only"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.4 }}
-          style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}
-        >
-          <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>Scroll</span>
-          <motion.div 
-            animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
-            style={{ width: '1px', height: '50px', background: 'linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)' }} 
-          />
+        <motion.div className="desktop-only" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
+          style={{ position: 'absolute', bottom: '3rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+          <motion.div animate={{ y: [0, 12, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}
+            style={{ width: '1px', height: '50px', background: 'linear-gradient(to bottom, rgba(218,41,28,0.6), transparent)' }} />
         </motion.div>
       </section>
 
-      {/* INFINITE MARQUEE */}
-      <Marquee />
-
-      {/* COUNTING STATS BENTO GRID */}
-      <section className="section" style={{ background: '#ffffff', position: 'relative', overflow: 'hidden', padding: '7rem 2rem' }}>
+      {/* ═══ STATS BAR ═══ */}
+      <section style={{ background: '#000', borderTop: '1px solid rgba(240,240,250,0.06)', borderBottom: '1px solid rgba(240,240,250,0.06)', padding: '4rem 2rem' }}>
         <div className="container">
           <div className="carousel-wrapper">
-          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-            
-            <motion.div 
-              whileHover={{ y: -4 }}
-              style={{ background: '#ffffff', borderBottom: '2px solid var(--red)', padding: '4rem 2rem', textAlign: 'center', transition: 'all 0.4s', position: 'relative' }}
-            >
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }}
-                style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontFamily: 'Inter', fontWeight: 600, color: '#181818', lineHeight: 1, marginBottom: '0.75rem', letterSpacing: '-0.02em' }}
-              >
-                <AnimatedCounter from={0} to={2850} suffix="+" suffixClassName="amber-plus" />
+          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', textAlign: 'center' }}>
+            {[
+              { value: 2850, suffix: '+', label: 'MILES OF GRID BUILT' },
+              { value: 140, suffix: '+', label: 'FULLY EQUIPPED CREWS' },
+              { value: 24, suffix: '/7', label: 'STORM RESPONSE' }
+            ].map((stat, idx) => (
+              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}>
+                <div style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontFamily: 'Inter', fontWeight: 700, color: '#f0f0fa', lineHeight: 1, letterSpacing: '-0.03em', marginBottom: '0.5rem' }}>
+                  <AnimatedCounter from={0} to={stat.value} suffix={stat.suffix} />
+                </div>
+                <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.2em', color: 'rgba(240,240,250,0.35)' }}>{stat.label}</div>
               </motion.div>
-              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#666666' }}>Miles of Grid Built</div>
-            </motion.div>
-
-            <motion.div 
-              whileHover={{ y: -4 }}
-              style={{ background: '#ffffff', borderBottom: '2px solid var(--red)', padding: '4rem 2rem', textAlign: 'center', transition: 'all 0.4s', position: 'relative' }}
-            >
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }}
-                style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontFamily: 'Inter', fontWeight: 600, color: '#181818', lineHeight: 1, marginBottom: '0.75rem', letterSpacing: '-0.02em' }}
-              >
-                <AnimatedCounter from={0} to={1500000} suffix="+" suffixClassName="amber-plus" />
-              </motion.div>
-              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#666666' }}>Safe Man-Hours Logged</div>
-            </motion.div>
-
-            <motion.div 
-              whileHover={{ y: -4 }}
-              style={{ background: '#ffffff', borderBottom: '2px solid var(--red)', padding: '4rem 2rem', textAlign: 'center', transition: 'all 0.4s', position: 'relative' }}
-            >
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }}
-                style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontFamily: 'Inter', fontWeight: 600, color: '#181818', lineHeight: 1, marginBottom: '0.75rem', letterSpacing: '-0.02em' }}
-              >
-                <AnimatedCounter from={0} to={140} suffix="+" suffixClassName="amber-plus" />
-              </motion.div>
-              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#666666' }}>Fully Equipped Crews</div>
-            </motion.div>
-
+            ))}
           </div>
           <SwipeHint />
           </div>
         </div>
       </section>
 
-      {/* FULL-BLEED CREW VIDEO BREAK */}
-      <section style={{ position: 'relative', height: 'clamp(300px, 50vw, 600px)', overflow: 'hidden' }}>
-        <video 
-          ref={(el) => {
-            if (!el) return;
-            el.muted = true;
-            const tryPlay = () => el.play().catch(() => {});
-            tryPlay();
-            // Retry on visibility change (iOS background tab fix)
-            document.addEventListener('visibilitychange', () => {
-              if (!document.hidden) tryPlay();
-            }, { once: true });
-            // Retry when scrolled into view
-            const obs = new IntersectionObserver(([e]) => {
-              if (e.isIntersecting) { tryPlay(); obs.disconnect(); }
-            }, { threshold: 0.1 });
-            obs.observe(el);
-          }}
-          src="/crew-video.mp4" 
-          autoPlay loop muted playsInline
-          preload="auto"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center' }} 
-        />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--dark) 0%, transparent 15%, transparent 85%, var(--dark) 100%)', zIndex: 1, pointerEvents: 'none' }} />
-      </section>
+      {/* ═══ MARQUEE ═══ */}
+      <Marquee />
 
-      {/* WHERE WE OPERATE — Dark cinematic panel */}
-      <section className="section" style={{ background: '#000000', borderTop: '1px solid #303030', padding: '5rem 2rem' }}>
-        <div className="container">
-          <div className="ops-layout" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.5fr)', gap: '4rem', alignItems: 'center' }}>
-            
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="section-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Activity size={16} /> Where We Work</div>
-              <h2 className="section-title">Gulf South <span style={{ color: 'var(--red)' }}>Coverage.</span></h2>
-              <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#8F8F8F', marginBottom: '2rem' }}>
-                We keep crews and equipment staged across the Gulf South so we can mobilize fast — whether it's a scheduled build or a Category 4 making landfall.
-              </p>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {[
-                  { status: 'HQ', color: 'var(--red)', loc: 'Alexandria, LA', desc: 'Central Dispatch & Fleet Staging' },
-                  { status: 'Storm Ready', color: 'var(--red)', loc: 'Houston, TX', desc: 'Hurricane Season Pre-Staging' },
-                  { status: 'Active', color: 'var(--red)', loc: 'Mobile, AL', desc: 'Underground Vault Rehab' }
-                ].map((item, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: '#0a0a0a', padding: '1rem 1.5rem', borderRadius: '2px', borderLeft: '2px solid var(--red)' }}>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '1rem', color: 'var(--white)' }}>{item.loc}</div>
-                      <div style={{ fontSize: '0.8rem', color: '#8F8F8F' }}>{item.desc}</div>
-                    </div>
-                    <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8F8F8F' }}>{item.status}</div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-              <OpsMap />
-            </motion.div>
-
-          </div>
+      {/* ═══ CREW VIDEO BREAK ═══ */}
+      <section style={{ position: 'relative', height: 'clamp(300px, 50vw, 500px)', overflow: 'hidden' }}>
+        <video
+          ref={(el) => { if (!el) return; el.muted = true; const tryPlay = () => el.play().catch(() => {}); tryPlay(); }}
+          src="/crew-video.mp4" autoPlay loop muted playsInline preload="auto"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #000 0%, transparent 25%, transparent 75%, #000 100%)', zIndex: 1 }} />
+        <div className="container" style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', alignItems: 'center' }}>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+            <div className="section-label">Our Crews in Action</div>
+            <h2 style={{ fontFamily: 'Inter', fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', color: '#f0f0fa', fontWeight: 600, lineHeight: 1.1, maxWidth: '400px' }}>Safety First,<br/>Mission Driven.</h2>
+          </motion.div>
         </div>
       </section>
 
-      {/* CORE CAPABILITIES — White editorial panel */}
-      <section className="section" style={{ background: '#ffffff', position: 'relative', overflow: 'hidden' }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'left', maxWidth: '700px', margin: '0 0 4rem' }}>
-            <div className="section-label" style={{ color: 'var(--red)' }}>Capabilities</div>
-            <h2 style={{ fontFamily: 'Inter', fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#181818', lineHeight: 1.15, marginBottom: '1.5rem', letterSpacing: '-0.02em', fontWeight: 500 }}>Full-Spectrum <span style={{ color: 'var(--red)' }}>Energy Services</span></h2>
-            <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: '#666666' }}>From critical infrastructure construction to emergency storm response, we bring the expertise required to keep power flowing reliably.</p>
+      {/* ═══ SERVICES GRID ═══ */}
+      <section className="section" style={{ background: '#000' }}>
+        <div className="container">
+          <div style={{ maxWidth: '500px', marginBottom: '4rem' }}>
+            <div className="section-label">Services</div>
+            <h2 className="section-title">Complete Utility<br/>Solutions</h2>
+            <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.4)' }}>From transmission to distribution, substation to storm response — we deliver full-spectrum utility construction services.</p>
           </div>
 
           <div className="carousel-wrapper">
-          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', pointerEvents: 'auto' }}>
+          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1px', background: 'rgba(240,240,250,0.06)' }}>
             {[
-              { title: 'Distribution', icon: <Zap color="#DA291C" size={28} />, desc: 'Turnkey overhead and underground distribution — new installations, reconductors, rehab work. From backyard pole changeouts to full right-of-way builds.' },
-              { title: 'Transmission', icon: <Shield color="#DA291C" size={28} />, desc: 'High-voltage transmission line construction, maintenance, and emergency repair. Engineered for reliability at scale across critical infrastructure.' },
-              { title: 'Substation', icon: <Wrench color="#DA291C" size={28} />, desc: 'Complete substation construction, upgrades, and maintenance. From foundations to energization — we deliver reliable power conversion.' }
+              { title: 'Transmission', icon: <Zap color="var(--red)" size={22} />, desc: 'High-voltage transmission line construction and maintenance — steel structures, conductor stringing, and right-of-way clearing.' },
+              { title: 'Distribution', icon: <Activity color="var(--red)" size={22} />, desc: 'Overhead and underground distribution systems. New builds, rebuilds, and system upgrades across the Gulf South.' },
+              { title: 'Substation', icon: <Wrench color="var(--red)" size={22} />, desc: 'Full substation construction, retrofit, and commissioning services. Concrete, steel, and control system integration.' },
+              { title: 'Storm Response', icon: <Shield color="var(--red)" size={22} />, desc: 'Rapid-deployment storm restoration crews available 24/7. Proven track record in hurricane, ice storm, and tornado recovery.' }
             ].map((srv, idx) => (
-              <motion.div 
-                key={srv.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-                whileHover={{ y: -4 }}
-                style={{ background: '#f8f8f8', borderBottom: '2px solid var(--red)', borderRadius: '2px', padding: '3rem 2.5rem', position: 'relative', cursor: 'pointer', transition: 'all 0.4s' }}
-              >
-                <div style={{ marginBottom: '1.5rem' }}>
-                  {srv.icon}
-                </div>
-                <h3 style={{ fontFamily: 'Inter', fontSize: '1.4rem', color: '#181818', marginBottom: '1rem', fontWeight: 600, letterSpacing: '-0.01em' }}>{srv.title}</h3>
-                <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: '#666666', marginBottom: '2rem' }}>{srv.desc}</p>
-                <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'Barlow Condensed', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>
-                  Learn More <ArrowRight size={16} />
+              <motion.div key={srv.title}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}
+                whileHover={{ background: 'rgba(218,41,28,0.04)' }}
+                style={{ background: '#000', padding: '3rem 2.5rem', cursor: 'pointer', transition: 'background 0.3s' }}>
+                <div style={{ marginBottom: '1.5rem', opacity: 0.8 }}>{srv.icon}</div>
+                <h3 style={{ fontFamily: 'Inter', fontSize: '1.2rem', color: '#f0f0fa', marginBottom: '1rem', fontWeight: 600 }}>{srv.title}</h3>
+                <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.4)', marginBottom: '1.5rem' }}>{srv.desc}</p>
+                <Link to="/services" style={{ fontFamily: 'Barlow Condensed', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                  Learn More <ArrowRight size={14} />
                 </Link>
               </motion.div>
             ))}
@@ -278,47 +150,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* THE TEAM — Dark cinematic panel */}
-      <section className="section" style={{ background: '#000000', padding: '7rem 2rem' }}>
+      {/* ═══ WHERE WE OPERATE ═══ */}
+      <section className="section" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(240,240,250,0.06)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem' }}>
-            <div className="section-label" style={{ justifyContent: 'center' }}>Our People</div>
-            <h2 className="section-title">The Team Behind <span style={{ color: 'var(--red)' }}>the Grid</span></h2>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#8F8F8F' }}>Every mile of wire built and every storm restored starts with our people.</p>
+            <div className="section-label" style={{ justifyContent: 'center' }}>Coverage Area</div>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>Operating Across<br/>the Gulf South</h2>
           </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2.5rem', maxWidth: '900px', margin: '0 auto' }}>
-            {[
-              { img: '/team-supervisor.png', name: 'Field Operations', role: 'Supervisors & Foremen', desc: 'Veterans with decades of storm response and grid construction experience leading every crew.' },
-              { img: '/team-dispatcher.png', name: 'Operations Center', role: 'Dispatch & Logistics', desc: 'Our 24/7 command center coordinates crews, equipment, and real-time weather intelligence.' },
-              { img: '/team-pm.png', name: 'Project Management', role: 'Engineering & Planning', desc: 'From blueprint to energization — our PMs ensure every project delivers on time and on budget.' },
-            ].map((person, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.15, duration: 0.5 }}
-                style={{ textAlign: 'center' }}
-              >
-                <div style={{ width: '160px', height: '160px', borderRadius: '2px', overflow: 'hidden', margin: '0 auto 1.5rem', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <img src={person.img} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
-                </div>
-                <h3 style={{ fontFamily: 'Inter', fontSize: '1.2rem', color: 'var(--white)', marginBottom: '0.3rem', fontWeight: 600 }}>{person.name}</h3>
-                <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '1rem' }}>{person.role}</div>
-                <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: '#8F8F8F' }}>{person.desc}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1px', background: 'rgba(240,240,250,0.06)' }}>
+            {['Louisiana', 'Texas', 'Mississippi', 'Alabama', 'Florida'].map((state, idx) => (
+              <motion.div key={state} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}
+                style={{ background: '#0a0a0a', padding: '2rem', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+                <MapPin size={14} color="var(--red)" />
+                <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(240,240,250,0.5)' }}>{state}</span>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <style>{`
-        .amber-plus { font-size: 0.6em; color: var(--red); }
-        @media(max-width: 900px) {
-          .ops-layout { grid-template-columns: 1fr !important; gap: 2rem !important; }
-        }
-      `}</style>
+      {/* ═══ LEADERSHIP ═══ */}
+      <section className="section" style={{ background: '#000', borderTop: '1px solid rgba(240,240,250,0.06)' }}>
+        <div className="container">
+          <div style={{ maxWidth: '500px', marginBottom: '4rem' }}>
+            <div className="section-label">Leadership</div>
+            <h2 className="section-title">The Team Behind<br/>the Power</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+            {[
+              { img: '/team-supervisor.png', name: 'Field Supervisor', role: 'Operations', desc: 'Leading field operations with hands-on expertise in overhead and underground distribution systems.' },
+              { img: '/team-dispatcher.png', name: 'Dispatch Center', role: 'Coordination', desc: 'Managing real-time crew deployment, material logistics, and storm response coordination.' },
+              { img: '/team-pm.png', name: 'Project Manager', role: 'Management', desc: 'Overseeing project timelines, budgets, and client relationships from contract to completion.' },
+            ].map((person, idx) => (
+              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
+                style={{ borderTop: '1px solid rgba(240,240,250,0.08)', paddingTop: '2rem' }}>
+                <div style={{ width: '80px', height: '80px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid rgba(240,240,250,0.1)' }}>
+                  <img src={person.img} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+                </div>
+                <h3 style={{ fontFamily: 'Inter', fontSize: '1.1rem', color: '#f0f0fa', fontWeight: 600, marginBottom: '0.25rem' }}>{person.name}</h3>
+                <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '1rem' }}>{person.role}</div>
+                <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'rgba(240,240,250,0.4)' }}>{person.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
