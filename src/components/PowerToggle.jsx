@@ -40,26 +40,24 @@ export default function PowerToggle({ compact = false }) {
         justifyContent: 'center',
         gap: compact ? '0' : '0.5rem',
         background: electrified
-          ? 'linear-gradient(135deg, #00A8FF, #00E5FF)'
-          : 'rgba(0, 168, 255, 0.08)',
+          ? '#DA291C'
+          : 'transparent',
         border: electrified
-          ? '2px solid #00E5FF'
-          : '1px solid rgba(0, 168, 255, 0.3)',
-        borderRadius: compact ? '50%' : '8px',
-        color: electrified ? '#060B14' : '#00A8FF',
+          ? '1px solid #DA291C'
+          : '1px solid rgba(255, 255, 255, 0.3)',
+        borderRadius: '2px',
+        color: electrified ? '#ffffff' : 'rgba(255,255,255,0.6)',
         padding: compact ? '0.5rem' : '0.6rem 1rem',
         cursor: 'pointer',
-        fontFamily: 'Barlow Condensed, sans-serif',
-        fontWeight: 700,
-        fontSize: '0.85rem',
+        fontFamily: 'Inter, sans-serif',
+        fontWeight: 500,
+        fontSize: '0.8rem',
         letterSpacing: '0.1em',
         textTransform: 'uppercase',
         minHeight: '44px',
         minWidth: compact ? '44px' : 'auto',
         transition: 'all 0.3s ease',
-        boxShadow: electrified
-          ? '0 0 20px rgba(0, 229, 255, 0.5), 0 0 40px rgba(0, 229, 255, 0.2), inset 0 0 15px rgba(255,255,255,0.2)'
-          : 'none',
+        boxShadow: 'none',
         position: 'relative',
         overflow: 'hidden',
       }}

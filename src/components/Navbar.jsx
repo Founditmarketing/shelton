@@ -43,7 +43,7 @@ export default function Navbar() {
             <img 
               src="https://www.sheltonenergy.com/html/images/imgs/sticky-logo.png" 
               alt="Shelton Energy Solutions Logo" 
-              style={{ height: '45px', objectFit: 'contain', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.9)) drop-shadow(0 0 25px rgba(255,255,255,0.5))' }}
+              style={{ height: '45px', objectFit: 'contain' }}
             />
           </Link>
 
@@ -55,13 +55,13 @@ export default function Navbar() {
                   key={item}
                   to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
                   style={{
-                    fontFamily: 'Barlow Condensed, sans-serif', textTransform: 'uppercase',
-                    fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.12em',
-                    color: location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`) ? 'var(--blue)' : 'var(--text-light)',
+                    fontFamily: 'Inter, sans-serif', textTransform: 'uppercase',
+                    fontSize: '0.8rem', fontWeight: 500, letterSpacing: '0.12em',
+                    color: location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`) ? 'var(--red)' : 'var(--white)',
                     transition: 'color 0.2s'
                   }}
-                  onMouseOver={(e) => e.currentTarget.style.color = 'var(--blue)'}
-                  onMouseOut={(e) => e.currentTarget.style.color = location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`) ? 'var(--blue)' : 'var(--text-light)'}
+                  onMouseOver={(e) => e.currentTarget.style.color = 'var(--red)'}
+                  onMouseOut={(e) => e.currentTarget.style.color = location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`) ? 'var(--red)' : 'var(--white)'}
                 >
                   {item}
                 </Link>
@@ -73,26 +73,24 @@ export default function Navbar() {
                 href="tel:3184435894" 
                 style={{ 
                   display: 'flex', alignItems: 'center', gap: '0.5rem', 
-                  fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.85rem',
+                  fontFamily: 'Inter, sans-serif', fontWeight: 500, fontSize: '0.8rem',
                   letterSpacing: '0.1em', textTransform: 'uppercase',
-                  color: 'var(--white)', background: 'var(--red)', borderRadius: '4px',
-                  padding: '0.6rem 1rem', transition: 'all 0.2s', minHeight: '44px',
-                  boxShadow: '0 0 15px rgba(230, 30, 37, 0.3)',
-                  animation: 'pulse-red 3s infinite'
+                  color: 'var(--white)', background: 'var(--red)', borderRadius: '2px',
+                  padding: '0.6rem 1rem', transition: 'all 0.2s', minHeight: '44px'
                 }}
               >
-                <Zap size={14} /> 24/7 STORM RESPONSE
+                <Zap size={14} /> 24/7 Storm Response
               </a>
               <a 
                 href="tel:3184435894" 
                 style={{ 
                   display: 'flex', alignItems: 'center', gap: '0.5rem', 
-                  fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600,
-                  color: 'var(--blue)', border: '1px solid var(--blue)', borderRadius: '4px',
+                  fontFamily: 'Inter, sans-serif', fontWeight: 500, fontSize: '0.8rem',
+                  color: 'var(--white)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '2px',
                   padding: '0.6rem 1.2rem', transition: 'all 0.2s', minHeight: '44px'
                 }}
-                onMouseOver={(e) => { e.currentTarget.style.background = 'var(--blue)'; e.currentTarget.style.color = 'var(--dark)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 168, 255, 0.4)'; }}
-                onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--blue)'; e.currentTarget.style.boxShadow = 'none'; }}
+                onMouseOver={(e) => { e.currentTarget.style.background = 'var(--white)'; e.currentTarget.style.color = '#000'; }}
+                onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--white)'; }}
               >
                 <Phone size={16} /> 318-443-5894
               </a>
